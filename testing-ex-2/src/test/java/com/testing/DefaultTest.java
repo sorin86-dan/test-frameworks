@@ -9,8 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -32,6 +31,13 @@ public class DefaultTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/message?service=TestServiceX"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(content().string("Hello, TestServiceX!"));
+    }
+
+    @Test
+    public void checkJSONMessageEndpoint() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/json-message?service=TestServiceJSONX"))
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("$.message").value("Hello, TestServiceJSONX!"));
     }
 
     @Test

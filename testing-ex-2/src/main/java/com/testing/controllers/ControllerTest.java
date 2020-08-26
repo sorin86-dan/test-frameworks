@@ -17,6 +17,11 @@ public class ControllerTest {
         return serviceTest.helloService(service);
     }
 
+    @GetMapping(value = "/json-message")
+    public String getJSONMessage(@RequestParam(name = "service") String service) {
+        return serviceTest.helloJSONService(service);
+    }
+
     @GetMapping(value = "/exception")
     public String getException() throws IllegalStateException {
         throw new IllegalStateException("Custom generated exception");
