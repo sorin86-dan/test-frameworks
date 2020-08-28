@@ -1,10 +1,9 @@
 package com.testing.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import com.testing.services.ServiceTest;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ControllerTest {
@@ -20,6 +19,11 @@ public class ControllerTest {
     @GetMapping(value = "/json-message")
     public String getJSONMessage(@RequestParam(name = "service") String service) {
         return serviceTest.helloJSONService(service);
+    }
+
+    @PostMapping(value = "/message")
+    public ResponseEntity setJSONMessage(@RequestBody String jsonBody, @RequestHeader("header") String header) {
+        return serviceTest.setHelloService(header, jsonBody);
     }
 
     @GetMapping(value = "/exception")
