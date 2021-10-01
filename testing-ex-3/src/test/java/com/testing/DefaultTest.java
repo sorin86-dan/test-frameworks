@@ -23,7 +23,7 @@ public class DefaultTest {
 
     @Test
     public void checkExceptionEndpoint() throws IOException {
-        URL url = new URL("http://localhost:8080/exception");
+        URL url = new URL("http://localhost:8081/exception");
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setRequestMethod("GET");
 
@@ -33,7 +33,7 @@ public class DefaultTest {
 
     @Test
     public void checkMessageEndpoint() throws IOException {
-        URL url = new URL("http://localhost:8080/message?service=TestServiceX");
+        URL url = new URL("http://localhost:8081/message?service=TestServiceX");
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setRequestMethod("GET");
 
@@ -43,7 +43,7 @@ public class DefaultTest {
 
     @Test
     public void checkInvalidEndpoint() throws IOException {
-        URL url = new URL("http://localhost:8080/mssage?service=TestServiceX");
+        URL url = new URL("http://localhost:8081/mssage?service=TestServiceX");
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setRequestMethod("GET");
 
@@ -52,7 +52,7 @@ public class DefaultTest {
 
     @Test
     public void checkMessageEndpointInvalidParameter() throws IOException {
-        URL url = new URL("http://localhost:8080/message?serviceX=TestServiceX");
+        URL url = new URL("http://localhost:8081/message?serviceX=TestServiceX");
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setRequestMethod("GET");
 
